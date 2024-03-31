@@ -1,36 +1,26 @@
 package com.cyberchat.chatserver.controller;
 
 import com.cyberchat.chatserver.model.ChatMessageDTO;
-import com.cyberchat.chatserver.service.ChatService;
 import lombok.AllArgsConstructor;
+import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.handler.annotation.Payload;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
-
-import java.util.List;
 
 @Controller
 @AllArgsConstructor
 public class ChatController {
 
-    private final ChatService chatService;
+    private SimpMessagingTemplate messagingTemplate;
 
-    @MessageMapping("/chat.sendMessage")
-    @SendTo("/topic/public")
-    public ChatMessageDTO sendMessage(ChatMessageDTO chatMessage) {
-        return chatService.sendMessage(chatMessage);
+    @MessageMapping("/chat/{chatRoomId}")
+    public void processMessage(@DestinationVariable Long chatRoomId, @Payload ChatMessageDTO messageDTO) {
+        //TODO
+        // Process the received message
+        // Save the message to the database or perform any other necessary operations
+
+        // Broadcast the message to all subscribers of the chat room topic
+        messagingTemplate.convertAndSend("/topic/chat/" + chatRoomId, messageDTO);
     }
-
-    @MessageMapping("/chat.joinRoom")
-    @SendTo("/topic/public")
-    public ChatMessageDTO joinRoom(ChatMessageDTO chatMessage) {
-        return chatService.joinRoom(chatMessage);
-    }
-
-    @MessageMapping("/chat.getHistory")
-    @SendTo("/topic/public")
-    public List<ChatMessageDTO> getHistory(ChatMessageDTO chatMessage) {
-        return chatService.getChatHistory(chatMessage.getRoomId());
-    }
-
 }

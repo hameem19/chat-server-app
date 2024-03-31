@@ -1,13 +1,14 @@
 package com.cyberchat.chatserver.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data@AllArgsConstructor@NoArgsConstructor
+import java.time.LocalDateTime;
+@Data@NoArgsConstructor@AllArgsConstructor
 public class ChatMessageDTO {
-    private String sender;
-    private String roomId;
+    private Long id;
     private String content;
+    private LocalDateTime createdAt;
+    private String username;
+
 }
 

@@ -6,11 +6,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Data
-public class ChatRoom {
+public class ChatRoomDTO {
     private final String roomId;
     private final Set<String> participants = new HashSet<>();
 
-    public ChatRoom(String roomId) {
+    public ChatRoomDTO(String roomId) {
         this.roomId = roomId;
     }
 
