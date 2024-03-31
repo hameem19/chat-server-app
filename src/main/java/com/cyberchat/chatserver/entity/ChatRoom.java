@@ -22,13 +22,4 @@ public class ChatRoom {
     @OneToMany(mappedBy = "chatRoom", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ChatMessage> messages = new ArrayList<>();
 
-    public void addMessage(ChatMessage message) {
-        messages.add(message);
-        message.setChatRoom(this);
-    }
-
-    public void removeMessage(ChatMessage message) {
-        messages.remove(message);
-        message.setChatRoom(null);
-    }
 }

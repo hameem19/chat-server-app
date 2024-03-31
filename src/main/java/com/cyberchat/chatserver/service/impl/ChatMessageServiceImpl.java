@@ -48,7 +48,10 @@ public class ChatMessageServiceImpl implements ChatMessageService {
                     return new ChatRoomNotFoundException("Chat room not found with ID: " + chatRoomId);
                 });
 
-        List<ChatMessage> messages = chatRoom.getMessages();
+        List<ChatMessage> messages = chatRoom.getMessages().stream()
+                .filter(message -> !message.isDeleted())
+                .toList();
+
         log.info("Retrieved {} messages for chat room with ID: {}", messages.size(), chatRoomId);
 
         return messages.stream()
