@@ -34,7 +34,8 @@ This is a chat server application built with Java and Spring Boot. It provides R
 
 1. Clone the repository:
 2. Navigate to the project directory:
-3. Build the project using Maven:
+3. Build the project using Maven: mvn clean install
+4. Go to target folder and run java -jar chat-server-0.0.1-SNAPSHOT.jar
 
 5. The application will start running on `http://localhost:9083`.
 6. Postman collection is added in the repository.
