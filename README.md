@@ -45,7 +45,7 @@ The API documentation is available using Swagger. Once the application is runnin
 
 ## Configuration
 
-The application uses an in-memory H2 database by default. If you want to use a different database, you can modify the `application.properties` file and provide the necessary database configuration.
+The application uses an in-memory H2 database by default. If you want to use a different database, you can modify the `application.yml` file and provide the necessary database configuration.
 
 ## Testing
 
