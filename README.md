@@ -37,6 +37,7 @@ This is a chat server application built with Java and Spring Boot. It provides R
 3. Build the project using Maven:
 
 5. The application will start running on `http://localhost:9083`.
+6. Postman collection is added in the repository.
 
 ## API Documentation
 
